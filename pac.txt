@@ -1,6 +1,8 @@
 // "twitchcdn.net", "ext-twitch.tv", 
 
 const domains = [
+    'hbfile.net',
+    'okx.com',
     'redditmedia.com',
     'redditstatic.com',
     'notion.site',
@@ -35,7 +37,6 @@ const domains = [
     'nacos.io',
     'gitbook.io',
     'gitbook.io',
-    'mexc.com',
     'whotwi.com',
     'telegram.com',
     'bybit.com',
@@ -1265,6 +1266,7 @@ const domains = [
     'goodtv.tv',
     'goofind.com',
     'google.co.jp',
+    'google.com.hk',
     'google.com',
     'googleartproject.com',
     'googlecode.com',
@@ -3049,6 +3051,7 @@ const domains = [
     'wikilivres.info',
     'wikimapia.org',
     'wikinews.org',
+    'wikimedia.org',
     'wikipedia.org',
     'wikisource.org',
     'wikivoyage.org',
@@ -3266,7 +3269,7 @@ domains.filter(Boolean).forEach(domain => {
 	domainObject[domain] = 1;
 });
 
-const proxy = "SOCKS5 127.0.0.1:10800;";
+const proxy = "SOCKS5 127.0.0.1:1080;";
 const direct = 'DIRECT;';
 function FindProxyForURL(url, host) {
 	let suffix;
