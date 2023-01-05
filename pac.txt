@@ -1,4 +1,4 @@
-// "twitchcdn.net", "ext-twitch.tv",
+// "twitchcdn.net", "ext-twitch.tv", 
 
 const domains = [
   "hbfile.net",
@@ -3264,9 +3264,24 @@ const domains = [
   "zyzc9.com",
 ];
 
-const proxy = "SOCKS5 127.0.0.1:10800;";
-const direct = "DIRECT;";
+const domainObject = {};
+domains.filter(Boolean).forEach(domain => {
+	domainObject[domain] = 1;
+});
+
+const proxy = "SOCKS5 127.0.0.1:1080;";
+const direct = 'DIRECT;';
 function FindProxyForURL(url, host) {
-  const isMatched = domains.some(domain => host.includes(domain) || domain.includes(host));
-  return isMatched ? proxy : direct;
+	let suffix;
+	let pos = host.lastIndexOf('.');
+	pos = host.lastIndexOf('.', pos - 1);
+	while(1) {
+		if (pos <= 0) {
+			if (Object.hasOwnProperty.call(domainObject, host)) { return proxy; } 
+			else { return direct; }
+		}
+		suffix = host.substring(pos + 1);
+		if (Object.hasOwnProperty.call(domainObject, suffix)) { return proxy; }
+		pos = host.lastIndexOf('.', pos - 1);
+	}
 }
