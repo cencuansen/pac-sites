@@ -1,6 +1,10 @@
-// "twitchcdn.net", "ext-twitch.tv", 
+// "twitchcdn.net", "ext-twitch.tv",
 
 const domains = [
+  "26img.com",
+  "gamcore.com",
+  "umamitaste.ar",
+  "greatfire.org",
   "hbfile.net",
   "okx.com",
   "redditmedia.com",
@@ -24,7 +28,6 @@ const domains = [
   "hanime1.me",
   "jable.tv",
   "doppiocdn.com",
-  "mushroomtrack.com",
   "jubi.plus",
   "unicrypt.network",
   "gate.io",
@@ -3265,23 +3268,28 @@ const domains = [
 ];
 
 const domainObject = {};
-domains.filter(Boolean).forEach(domain => {
-	domainObject[domain] = 1;
+domains.filter(Boolean).forEach((domain) => {
+  domainObject[domain] = 1;
 });
 
 const proxy = "SOCKS5 127.0.0.1:1080;";
-const direct = 'DIRECT;';
+const direct = "DIRECT;";
 function FindProxyForURL(url, host) {
-	let suffix;
-	let pos = host.lastIndexOf('.');
-	pos = host.lastIndexOf('.', pos - 1);
-	while(1) {
-		if (pos <= 0) {
-			if (Object.hasOwnProperty.call(domainObject, host)) { return proxy; } 
-			else { return direct; }
-		}
-		suffix = host.substring(pos + 1);
-		if (Object.hasOwnProperty.call(domainObject, suffix)) { return proxy; }
-		pos = host.lastIndexOf('.', pos - 1);
-	}
+  let suffix;
+  let pos = host.lastIndexOf(".");
+  pos = host.lastIndexOf(".", pos - 1);
+  while (1) {
+    if (pos <= 0) {
+      if (Object.hasOwnProperty.call(domainObject, host)) {
+        return proxy;
+      } else {
+        return direct;
+      }
+    }
+    suffix = host.substring(pos + 1);
+    if (Object.hasOwnProperty.call(domainObject, suffix)) {
+      return proxy;
+    }
+    pos = host.lastIndexOf(".", pos - 1);
+  }
 }
