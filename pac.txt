@@ -1,6 +1,7 @@
 // "twitchcdn.net", "ext-twitch.tv",
 
 const domains = [
+  "openai.com",
   "26img.com",
   "gamcore.com",
   "umamitaste.ar",
@@ -1854,7 +1855,6 @@ const domains = [
   "mrdoob.com",
   "mrtweet.com",
   "msguancha.com",
-  "msn.com.tw",
   "mthruf.com",
   "mtw.tl",
   "multiply.com",
@@ -3272,7 +3272,7 @@ domains.filter(Boolean).forEach((domain) => {
   domainObject[domain] = 1;
 });
 
-const proxy = "SOCKS5 127.0.0.1:1080;";
+const proxy = "SOCKS5 127.0.0.1:10800;";
 const direct = "DIRECT;";
 function FindProxyForURL(url, host) {
   let suffix;
